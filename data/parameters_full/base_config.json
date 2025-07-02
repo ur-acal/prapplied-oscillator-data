@@ -1,0 +1,12 @@
+{
+    "dt": "1e-3",
+    "scale0": "0.0",
+    "scale1": "0.0",
+    "quadratic-model": "H4",
+    "cubic-model": "H6",
+    "shil-coeff": "0",
+    "anneal-power": "0",
+    "local-coeff": "-1",
+    "tstop": "136",
+    "project": "False"
+}
