@@ -1,5 +1,6 @@
 import numpy as np
 from ot import emd2
+import re
 
 # from ot import emd2
 def distance(a, b):
@@ -25,22 +26,13 @@ def get_phase_entropy(complex):
     comparison_measure[pival+1] = float(n_zeros / (n_ones + n_zeros))/3
     comparison_measure[pival-1] = float(n_zeros / (n_ones + n_zeros))/3
     comparison_measure[pival] = float(n_zeros / (n_ones + n_zeros))/3
-    # prob = values / values.sum()
+    prob = values / values.sum()
     emd = emd2(prob, comparison_measure, C)
     entropy_p_hcomplete = -np.nansum(prob * np.log(prob))
     return entropy_p_hcomplete, emd
 re1 = re.compile(r'\(([\d\.e\+-]+),\s*([\d\.e\+-]+)\)')
 re2 = re.compile(r'Energy:\s*([\d\.-]+)\n(.*)')
-def hex_to_rgb(value):
-    value = value.lstrip('#')
-    lv = len(value)
-    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
-palette = [
-    "#ca0020",
-    "#f4a582",
-    "#92c5de",
-    '#0571b0'
-]
+
 def read_cnf(path):
     with open(path) as cnffile:
         clauses = []
